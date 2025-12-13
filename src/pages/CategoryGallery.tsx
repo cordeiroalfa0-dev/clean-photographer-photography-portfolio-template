@@ -34,8 +34,8 @@ const CategoryGallery = () => {
         const data = await fetchMixedMedia(categoryUpper, page, 20);
         setImages(data.items);
       } catch (err) {
-        console.error('Error fetching Pexels media:', err);
-        setError('Failed to load images. Please try again later.');
+        console.error('Erro ao carregar mídia:', err);
+        setError('Falha ao carregar imagens. Por favor, tente novamente mais tarde.');
       } finally {
         setLoading(false);
       }
@@ -51,42 +51,42 @@ const CategoryGallery = () => {
 
   const getCategoryTitle = (cat: string) => {
     const titles: Record<string, string> = {
-      'selected': 'Selected Works',
-      'commissioned': 'Commissioned Projects',
-      'editorial': 'Editorial Photography',
-      'personal': 'Personal Projects',
-      'all': 'All Photography'
+      'selected': 'Trabalhos Selecionados',
+      'commissioned': 'Projetos Encomendados',
+      'editorial': 'Fotografia Editorial',
+      'personal': 'Projetos Pessoais',
+      'all': 'Toda a Fotografia'
     };
-    return titles[cat] || 'Gallery';
+    return titles[cat] || 'Galeria';
   };
 
   const getCategoryDescription = (cat: string) => {
     const descriptions: Record<string, string> = {
-      'selected': 'Curated selection of luxury fashion campaigns and high-end editorial work showcasing contemporary minimalism and timeless elegance.',
-      'commissioned': 'Commercial fashion campaigns for luxury brands, featuring product photography with clean aesthetics and professional execution.',
-      'editorial': 'Editorial fashion photography for leading publications, combining artistic vision with commercial excellence.',
-      'personal': 'Artistic personal projects exploring black and white photography, intimate portraiture, and creative experimentation.',
-      'all': 'Complete portfolio spanning fashion campaigns, editorial work, and personal projects with a distinctive minimalist aesthetic.'
+      'selected': 'Seleção curada de campanhas de moda de luxo e trabalhos editoriais de alto padrão, apresentando minimalismo contemporâneo e elegância atemporal.',
+      'commissioned': 'Campanhas comerciais de moda para marcas de luxo, apresentando fotografia de produto com estética clean e execução profissional.',
+      'editorial': 'Fotografia editorial de moda para publicações de destaque, combinando visão artística com excelência comercial.',
+      'personal': 'Projetos pessoais artísticos explorando fotografia em preto e branco, retratos íntimos e experimentação criativa.',
+      'all': 'Portfólio completo abrangendo campanhas de moda, trabalhos editoriais e projetos pessoais com uma estética minimalista distintiva.'
     };
-    return descriptions[cat] || 'Explore the collection';
+    return descriptions[cat] || 'Explore a coleção';
   };
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": `${getCategoryTitle(category)} - Morgan Blake`,
+    "name": `${getCategoryTitle(category)} - Maria Silva`,
     "description": getCategoryDescription(category),
-    "url": `https://morganblake.com/category/${category}`,
+    "url": `https://mariasilva.com.br/category/${category}`,
     "creator": {
       "@type": "Person",
-      "name": "Morgan Blake"
+      "name": "Maria Silva"
     }
   };
 
   return (
     <>
       <SEO
-        title={`${getCategoryTitle(category)} - Morgan Blake`}
+        title={`${getCategoryTitle(category)} - Maria Silva`}
         description={getCategoryDescription(category)}
         canonicalUrl={`/category/${category}`}
         jsonLd={jsonLd}
@@ -114,7 +114,7 @@ const CategoryGallery = () => {
 
         {!loading && !error && images.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-muted-foreground">No images found in this category.</p>
+            <p className="text-muted-foreground">Nenhuma imagem encontrada nesta categoria.</p>
           </div>
         )}
       </main>

@@ -20,9 +20,9 @@ import {
 import { useToast } from "@/hooks/use-toast";
 
 const contactSchema = z.object({
-  name: z.string().trim().min(1, { message: "Name is required" }).max(100, { message: "Name must be less than 100 characters" }),
-  email: z.string().trim().email({ message: "Invalid email address" }).max(255, { message: "Email must be less than 255 characters" }),
-  message: z.string().trim().min(1, { message: "Message is required" }).max(1000, { message: "Message must be less than 1000 characters" }),
+  name: z.string().trim().min(1, { message: "Nome é obrigatório" }).max(100, { message: "Nome deve ter menos de 100 caracteres" }),
+  email: z.string().trim().email({ message: "Endereço de e-mail inválido" }).max(255, { message: "E-mail deve ter menos de 255 caracteres" }),
+  message: z.string().trim().min(1, { message: "Mensagem é obrigatória" }).max(1000, { message: "Mensagem deve ter menos de 1000 caracteres" }),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -48,8 +48,8 @@ const About = () => {
     // Simulate form submission
     setTimeout(() => {
       toast({
-        title: "Message sent",
-        description: "Thank you for your inquiry. I'll get back to you soon.",
+        title: "Mensagem enviada",
+        description: "Obrigada pelo contato. Retornarei em breve.",
       });
       form.reset();
       setIsSubmitting(false);
@@ -65,13 +65,13 @@ const About = () => {
           const photo = data.photos[0];
           setPortrait({
             src: photo.src.large2x,
-            alt: photo.alt || 'Portrait',
+            alt: photo.alt || 'Retrato',
             width: photo.width,
             height: photo.height,
           });
         }
       } catch (err) {
-        console.error('Error fetching portrait:', err);
+        console.error('Erro ao carregar retrato:', err);
       } finally {
         setLoading(false);
       }
@@ -83,8 +83,8 @@ const About = () => {
   return (
     <>
       <SEO
-        title="About - Morgan Blake"
-        description="Learn about Morgan Blake, a production photographer specializing in fashion, editorial, and commercial photography."
+        title="Sobre - Maria Silva"
+        description="Conheça Maria Silva, fotógrafa de produção especializada em moda, editorial e fotografia comercial."
         canonicalUrl="/about"
       />
 
@@ -97,10 +97,10 @@ const About = () => {
           <div className="text-center space-y-8 mb-16 px-3 md:px-5 max-w-2xl mx-auto">
             <div className="space-y-4">
               <h1 className="font-playfair text-4xl md:text-5xl text-foreground">
-                Morgan Blake
+                Maria Silva
               </h1>
               <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-inter">
-                PRODUCTION & PHOTOGRAPHY
+                PRODUÇÃO & FOTOGRAFIA
               </p>
             </div>
 
@@ -139,28 +139,28 @@ const About = () => {
           {/* Bio Section */}
           <div className="max-w-2xl mx-auto px-3 md:px-5 space-y-8 text-center text-foreground/80 text-sm leading-relaxed mb-16">
             <p>
-              Production photographer specializing in fashion, editorial, and commercial photography.
-              Creating compelling imagery with technical precision and creative vision for global brands
-              and publications.
+              Fotógrafa de produção especializada em moda, editorial e fotografia comercial.
+              Criando imagens marcantes com precisão técnica e visão criativa para marcas
+              e publicações.
             </p>
 
             <p>
-              Full production services including art buying, location scouting, casting, and on-set
-              management. Collaborative approach ensuring seamless execution from concept to delivery.
+              Serviços completos de produção incluindo direção de arte, locação, casting e
+              gerenciamento de set. Abordagem colaborativa garantindo execução impecável do conceito à entrega.
             </p>
 
             <div className="pt-8">
-              <h2 className="font-playfair text-xl text-foreground mb-4">Services</h2>
+              <h2 className="font-playfair text-xl text-foreground mb-4">Serviços</h2>
               <p className="text-foreground/70 text-xs uppercase tracking-wider leading-loose">
-                Fashion & Editorial Photography / Commercial Production / Art Buying & Creative Direction /
-                Location Scouting / Casting & Talent Coordination
+                Fotografia de Moda & Editorial / Produção Comercial / Direção de Arte & Criação /
+                Locação / Casting & Coordenação de Talentos
               </p>
             </div>
 
             <div className="pt-4">
-              <h2 className="font-playfair text-xl text-foreground mb-4">Select Clients</h2>
+              <h2 className="font-playfair text-xl text-foreground mb-4">Clientes Selecionados</h2>
               <p className="text-foreground/70 text-xs uppercase tracking-wider leading-loose">
-                Various fashion brands and editorial publications
+                Diversas marcas de moda e publicações editoriais
               </p>
             </div>
           </div>
@@ -169,13 +169,13 @@ const About = () => {
           <div className="max-w-xl mx-auto px-3 md:px-5 pt-16">
             <div className="text-center space-y-4 mb-12">
               <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-inter">
-                INQUIRIES
+                CONTATO
               </p>
               <h2 className="font-playfair text-4xl md:text-5xl text-foreground">
-                Contact
+                Entre em Contato
               </h2>
               <p className="text-foreground/80 text-sm leading-relaxed">
-                For project inquiries and collaborations.
+                Para orçamentos e colaborações.
               </p>
             </div>
 
@@ -187,11 +187,11 @@ const About = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-sm uppercase tracking-wider text-foreground/70 font-inter">
-                        Name *
+                        Nome *
                       </FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Your name"
+                          placeholder="Seu nome"
                           className="border-0 border-b border-foreground/20 rounded-none bg-transparent text-foreground px-0 focus-visible:ring-0 focus-visible:border-foreground transition-colors"
                           {...field}
                         />
@@ -207,12 +207,12 @@ const About = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-sm uppercase tracking-wider text-foreground/70 font-inter">
-                        Email *
+                        E-mail *
                       </FormLabel>
                       <FormControl>
                         <Input
                           type="email"
-                          placeholder="your@email.com"
+                          placeholder="seu@email.com"
                           className="border-0 border-b border-foreground/20 rounded-none bg-transparent text-foreground px-0 focus-visible:ring-0 focus-visible:border-foreground transition-colors"
                           {...field}
                         />
@@ -228,11 +228,11 @@ const About = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-sm uppercase tracking-wider text-foreground/70 font-inter">
-                        Message *
+                        Mensagem *
                       </FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Tell me about your project..."
+                          placeholder="Conte-me sobre seu projeto..."
                           className="border-0 border-b border-foreground/20 rounded-none bg-transparent text-foreground min-h-[150px] px-0 focus-visible:ring-0 focus-visible:border-foreground transition-colors resize-none"
                           {...field}
                         />
@@ -249,7 +249,7 @@ const About = () => {
                     variant="outline"
                     className="w-full md:w-auto px-12 py-6 text-sm uppercase tracking-widest font-inter border-foreground/40 hover:bg-foreground hover:text-background transition-all"
                   >
-                    {isSubmitting ? "Sending..." : "Send"}
+                    {isSubmitting ? "Enviando..." : "Enviar"}
                   </Button>
                 </div>
               </form>

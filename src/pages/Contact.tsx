@@ -19,9 +19,9 @@ import {
 import { useToast } from "@/hooks/use-toast";
 
 const contactSchema = z.object({
-  name: z.string().trim().min(1, { message: "Name is required" }).max(100, { message: "Name must be less than 100 characters" }),
-  email: z.string().trim().email({ message: "Invalid email address" }).max(255, { message: "Email must be less than 255 characters" }),
-  message: z.string().trim().min(1, { message: "Message is required" }).max(1000, { message: "Message must be less than 1000 characters" }),
+  name: z.string().trim().min(1, { message: "Nome é obrigatório" }).max(100, { message: "Nome deve ter menos de 100 caracteres" }),
+  email: z.string().trim().email({ message: "Endereço de e-mail inválido" }).max(255, { message: "E-mail deve ter menos de 255 caracteres" }),
+  message: z.string().trim().min(1, { message: "Mensagem é obrigatória" }).max(1000, { message: "Mensagem deve ter menos de 1000 caracteres" }),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -45,8 +45,8 @@ const Contact = () => {
     // Simulate form submission
     setTimeout(() => {
       toast({
-        title: "Message sent",
-        description: "Thank you for your inquiry. I'll get back to you soon.",
+        title: "Mensagem enviada",
+        description: "Obrigada pelo contato. Retornarei em breve.",
       });
       form.reset();
       setIsSubmitting(false);
@@ -56,8 +56,8 @@ const Contact = () => {
   return (
     <>
       <SEO
-        title="Contact - Morgan Blake"
-        description="Get in touch with Morgan Blake for photography inquiries, production services, and collaboration opportunities."
+        title="Contato - Maria Silva"
+        description="Entre em contato com Maria Silva para orçamentos de fotografia, serviços de produção e oportunidades de colaboração."
         canonicalUrl="/contact"
       />
 
@@ -69,13 +69,13 @@ const Contact = () => {
         <section className="max-w-[1600px] mx-auto px-3 md:px-5 pt-20 pb-12 md:pt-24 md:pb-16">
           <div className="text-center space-y-4 mb-12">
             <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-inter">
-              INQUIRIES
+              CONTATO
             </p>
             <h1 className="font-playfair text-4xl md:text-5xl text-foreground">
-              Contact
+              Entre em Contato
             </h1>
             <p className="text-foreground/80 text-sm leading-relaxed max-w-xl mx-auto">
-              For project inquiries and collaborations.
+              Para orçamentos e colaborações.
             </p>
           </div>
 
@@ -88,11 +88,11 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-sm uppercase tracking-wider text-foreground/70 font-inter">
-                        Name *
+                        Nome *
                       </FormLabel>
                       <FormControl>
                         <Input 
-                          placeholder="Your name" 
+                          placeholder="Seu nome" 
                           className="border-0 border-b border-foreground/20 rounded-none bg-transparent text-foreground px-0 focus-visible:ring-0 focus-visible:border-foreground transition-colors"
                           {...field} 
                         />
@@ -108,12 +108,12 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-sm uppercase tracking-wider text-foreground/70 font-inter">
-                        Email *
+                        E-mail *
                       </FormLabel>
                       <FormControl>
                         <Input 
                           type="email" 
-                          placeholder="your@email.com" 
+                          placeholder="seu@email.com" 
                           className="border-0 border-b border-foreground/20 rounded-none bg-transparent text-foreground px-0 focus-visible:ring-0 focus-visible:border-foreground transition-colors"
                           {...field} 
                         />
@@ -129,11 +129,11 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-sm uppercase tracking-wider text-foreground/70 font-inter">
-                        Message *
+                        Mensagem *
                       </FormLabel>
                       <FormControl>
                         <Textarea 
-                          placeholder="Tell me about your project..." 
+                          placeholder="Conte-me sobre seu projeto..." 
                           className="border-0 border-b border-foreground/20 rounded-none bg-transparent text-foreground min-h-[150px] px-0 focus-visible:ring-0 focus-visible:border-foreground transition-colors resize-none"
                           {...field} 
                         />
@@ -150,7 +150,7 @@ const Contact = () => {
                     variant="outline"
                     className="w-full md:w-auto px-12 py-6 text-sm uppercase tracking-widest font-inter border-foreground/40 hover:bg-foreground hover:text-background transition-all"
                   >
-                    {isSubmitting ? "Sending..." : "Send"}
+                    {isSubmitting ? "Enviando..." : "Enviar"}
                   </Button>
                 </div>
               </form>

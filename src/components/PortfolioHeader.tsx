@@ -9,10 +9,10 @@ interface PortfolioHeaderProps {
 }
 
 const categories = [
-  "SELECTED",
-  "COMMISSIONED",
-  "EDITORIAL",
-  "PERSONAL",
+  { key: "SELECTED", label: "SELECIONADOS" },
+  { key: "COMMISSIONED", label: "ENCOMENDADOS" },
+  { key: "EDITORIAL", label: "EDITORIAL" },
+  { key: "PERSONAL", label: "PESSOAL" },
 ];
 
 const PortfolioHeader = ({ activeCategory }: PortfolioHeaderProps) => {
@@ -53,10 +53,10 @@ const PortfolioHeader = ({ activeCategory }: PortfolioHeaderProps) => {
         >
           {hoveredItem === 'name' ? (
             <TextRoll duration={0.3} getEnterDelay={(i) => i * 0.02} getExitDelay={(i) => i * 0.02}>
-              MORGAN BLAKE
+              MARIA SILVA
             </TextRoll>
           ) : (
-            "MORGAN BLAKE"
+            "MARIA SILVA"
           )}
         </Link>
 
@@ -64,7 +64,7 @@ const PortfolioHeader = ({ activeCategory }: PortfolioHeaderProps) => {
         <button
           onClick={() => setMobileMenuOpen(true)}
           className="md:hidden p-2 text-foreground/70 hover:text-foreground transition-colors"
-          aria-label="Open navigation menu"
+          aria-label="Abrir menu de navegação"
           aria-expanded={mobileMenuOpen}
         >
           <Menu size={20} />
@@ -74,22 +74,22 @@ const PortfolioHeader = ({ activeCategory }: PortfolioHeaderProps) => {
         <div className="hidden md:flex items-center gap-3">
         {categories.map((category) => (
           <Link
-            key={category}
-            to={`/category/${category.toLowerCase()}`}
-            onMouseEnter={() => setHoveredItem(category)}
+            key={category.key}
+            to={`/category/${category.key.toLowerCase()}`}
+            onMouseEnter={() => setHoveredItem(category.key)}
             onMouseLeave={() => setHoveredItem(null)}
             className={`text-[10px] md:text-[11px] uppercase tracking-widest font-inter transition-colors whitespace-nowrap ${
-              activeCategory === category
+              activeCategory === category.key
                 ? "text-foreground font-medium"
                 : "text-muted-foreground hover:text-foreground/80"
             }`}
           >
-            {hoveredItem === category ? (
+            {hoveredItem === category.key ? (
               <TextRoll duration={0.3} getEnterDelay={(i) => i * 0.02} getExitDelay={(i) => i * 0.02}>
-                {category}
+                {category.label}
               </TextRoll>
             ) : (
-              category
+              category.label
             )}
           </Link>
         ))}
@@ -102,10 +102,10 @@ const PortfolioHeader = ({ activeCategory }: PortfolioHeaderProps) => {
         >
           {hoveredItem === 'about' ? (
             <TextRoll duration={0.3} getEnterDelay={(i) => i * 0.02} getExitDelay={(i) => i * 0.02}>
-              ABOUT
+              SOBRE
             </TextRoll>
           ) : (
-            "ABOUT"
+            "SOBRE"
           )}
         </Link>
       </div>
@@ -117,14 +117,14 @@ const PortfolioHeader = ({ activeCategory }: PortfolioHeaderProps) => {
               className="fixed inset-0 bg-background z-50 md:hidden"
               role="dialog"
               aria-modal="true"
-              aria-label="Mobile navigation"
+              aria-label="Navegação mobile"
             >
               {/* Close Button */}
               <div className="flex justify-end p-5">
                 <button
                   onClick={() => setMobileMenuOpen(false)}
                   className="p-2 text-foreground/70 hover:text-foreground transition-colors"
-                  aria-label="Close navigation menu"
+                  aria-label="Fechar menu de navegação"
                 >
                   <X size={24} />
                 </button>
@@ -135,16 +135,16 @@ const PortfolioHeader = ({ activeCategory }: PortfolioHeaderProps) => {
                 {/* Categories */}
                 {categories.map((category) => (
                   <Link
-                    key={category}
-                    to={`/category/${category.toLowerCase()}`}
+                    key={category.key}
+                    to={`/category/${category.key.toLowerCase()}`}
                     onClick={() => setMobileMenuOpen(false)}
                     className={`text-lg uppercase tracking-widest font-inter transition-colors ${
-                      activeCategory === category
+                      activeCategory === category.key
                         ? "text-foreground font-medium"
                         : "text-muted-foreground"
                     }`}
                   >
-                    {category}
+                    {category.label}
                   </Link>
                 ))}
 
@@ -157,7 +157,7 @@ const PortfolioHeader = ({ activeCategory }: PortfolioHeaderProps) => {
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-lg uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors font-inter"
                 >
-                  ABOUT
+                  SOBRE
                 </Link>
               </nav>
             </div>

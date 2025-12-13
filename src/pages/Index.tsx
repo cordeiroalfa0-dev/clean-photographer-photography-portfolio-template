@@ -25,15 +25,15 @@ const Index = () => {
         const data = await fetchMixedMedia(activeCategory, 1, 20);
         setDisplayImages(data.items);
       } catch (err) {
-        console.error('Error fetching Pexels media:', err);
-        setError('Failed to load images. Please try again later.');
+        console.error('Erro ao carregar mídia:', err);
+        setError('Falha ao carregar imagens. Por favor, tente novamente mais tarde.');
       } finally {
         setLoading(false);
       }
     };
 
     loadImages();
-  }, []); // Remove activeCategory dependency - it's now constant
+  }, []);
 
   const handleImageClick = (index: number) => {
     setLightboxIndex(index);
@@ -43,33 +43,33 @@ const Index = () => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Morgan Blake",
-    "jobTitle": "Production Photographer",
-    "description": "Production photographer specializing in fashion, editorial, and commercial photography. Creating compelling imagery for global brands and publications.",
-    "url": "https://morganblake.com",
-    "image": "https://morganblake.com/og-image.jpg",
+    "name": "Maria Silva",
+    "jobTitle": "Fotógrafa de Produção",
+    "description": "Fotógrafa de produção especializada em moda, editorial e fotografia comercial. Criando imagens marcantes para marcas e publicações.",
+    "url": "https://mariasilva.com.br",
+    "image": "https://mariasilva.com.br/og-image.jpg",
     "sameAs": [
-      "https://instagram.com/morganblake.photo"
+      "https://instagram.com/mariasilva.foto"
     ],
     "knowsAbout": [
-      "Fashion Photography",
-      "Editorial Photography",
-      "Commercial Production",
-      "Fashion Campaigns",
-      "Brand Photography"
+      "Fotografia de Moda",
+      "Fotografia Editorial",
+      "Produção Comercial",
+      "Campanhas de Moda",
+      "Fotografia de Marcas"
     ],
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "London",
-      "addressCountry": "UK"
+      "addressLocality": "São Paulo",
+      "addressCountry": "BR"
     }
   };
 
   return (
     <>
       <SEO
-        title="Morgan Blake - Fashion Production & Photography"
-        description="Production photographer specializing in fashion, editorial, and commercial photography. Creating compelling imagery for global brands and publications."
+        title="Maria Silva - Produção & Fotografia de Moda"
+        description="Fotógrafa de produção especializada em moda, editorial e fotografia comercial. Criando imagens marcantes para marcas e publicações."
         canonicalUrl="/"
         ogType="profile"
         jsonLd={jsonLd}
@@ -97,7 +97,7 @@ const Index = () => {
 
         {!loading && !error && displayImages.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-muted-foreground">No images found in this category.</p>
+            <p className="text-muted-foreground">Nenhuma imagem encontrada nesta categoria.</p>
           </div>
         )}
       </main>
