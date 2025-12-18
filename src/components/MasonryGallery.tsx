@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 interface GalleryItem {
   type?: "image" | "video";
@@ -49,8 +50,16 @@ const MasonryGallery = ({ images, onImageClick }: MasonryGalleryProps) => {
     <div className="max-w-[1800px] mx-auto px-4 md:px-8 pb-20">
       <div className="text-center">
         {images.map((image, index) => (
-          <button
+          <motion.button
             key={index}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ 
+              duration: 0.6, 
+              delay: (index % 5) * 0.08,
+              ease: [0.22, 1, 0.36, 1]
+            }}
             onClick={() => onImageClick(index)}
             onMouseEnter={() => handleImageHover(index)}
             onMouseLeave={() => setHoveredIndex(null)}
@@ -81,7 +90,7 @@ const MasonryGallery = ({ images, onImageClick }: MasonryGalleryProps) => {
                       hoveredIndex !== null && hoveredIndex !== index
                         ? "grayscale opacity-40"
                         : "grayscale-0 opacity-100"
-                    } group-hover:scale-[1.02]`}
+                    } group-hover:scale-[1.03]`}
                     style={{
                       opacity: loadedImages.has(index) ? (hoveredIndex !== null && hoveredIndex !== index ? 0.4 : 1) : 0,
                       transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -110,7 +119,7 @@ const MasonryGallery = ({ images, onImageClick }: MasonryGalleryProps) => {
                       hoveredIndex !== null && hoveredIndex !== index
                         ? "grayscale opacity-40"
                         : "grayscale-0 opacity-100"
-                    } group-hover:scale-[1.02]`}
+                    } group-hover:scale-[1.03]`}
                     style={{
                       opacity: loadedImages.has(index) ? (hoveredIndex !== null && hoveredIndex !== index ? 0.4 : 1) : 0,
                       transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -120,7 +129,7 @@ const MasonryGallery = ({ images, onImageClick }: MasonryGalleryProps) => {
                 </picture>
               )}
             </div>
-          </button>
+          </motion.button>
         ))}
       </div>
     </div>
