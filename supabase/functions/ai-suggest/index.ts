@@ -29,19 +29,19 @@ serve(async (req) => {
         messages: [
           {
             role: "system",
-            content: `Você sugere ideias criativas para ensaios fotográficos de moda glamour e sensual. Baseado no contexto, sugira 3 ideias únicas e criativas.`
+            content: `Você sugere ideias criativas para tatuagens artísticas. Baseado no contexto, sugira 3 ideias únicas e criativas de tatuagem.`
           },
           {
             role: "user",
-            content: context || "Sugira ideias para um ensaio fotográfico elegante e sofisticado."
+            content: context || "Sugira ideias para uma tatuagem elegante e significativa."
           }
         ],
         tools: [
           {
             type: "function",
             function: {
-              name: "suggest_photoshoot_ideas",
-              description: "Retorna 3 sugestões criativas para ensaios fotográficos",
+              name: "suggest_tattoo_ideas",
+              description: "Retorna 3 sugestões criativas para tatuagens",
               parameters: {
                 type: "object",
                 properties: {
@@ -52,10 +52,10 @@ serve(async (req) => {
                       properties: {
                         title: { type: "string" },
                         description: { type: "string" },
-                        mood: { type: "string" },
-                        colors: { type: "string" }
+                        style: { type: "string" },
+                        placement: { type: "string" }
                       },
-                      required: ["title", "description", "mood", "colors"]
+                      required: ["title", "description", "style", "placement"]
                     }
                   }
                 },
@@ -64,7 +64,7 @@ serve(async (req) => {
             }
           }
         ],
-        tool_choice: { type: "function", function: { name: "suggest_photoshoot_ideas" } }
+        tool_choice: { type: "function", function: { name: "suggest_tattoo_ideas" } }
       }),
     });
 

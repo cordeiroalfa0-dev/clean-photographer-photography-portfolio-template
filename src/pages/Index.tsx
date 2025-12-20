@@ -46,14 +46,14 @@ const Index = () => {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Maria Silva",
-    "jobTitle": "Fotógrafa de Produção",
-    "description": "Fotógrafa de produção especializada em moda, editorial e fotografia comercial.",
-    "url": "https://mariasilva.com.br",
-    "image": "https://mariasilva.com.br/og-image.jpg",
-    "sameAs": ["https://instagram.com/mariasilva.foto"],
-    "knowsAbout": ["Fotografia de Moda", "Fotografia Editorial", "Produção Comercial"],
+    "@type": "LocalBusiness",
+    "name": "Ink Studio",
+    "jobTitle": "Estúdio de Tatuagem",
+    "description": "Estúdio de tatuagem especializado em blackwork, fine line e realismo. Arte permanente que conta sua história.",
+    "url": "https://inkstudio.com.br",
+    "image": "https://inkstudio.com.br/og-image.jpg",
+    "sameAs": ["https://instagram.com/inkstudio.tattoo"],
+    "knowsAbout": ["Blackwork", "Fine Line", "Realismo", "Tatuagem Geométrica", "Dotwork"],
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "São Paulo",
@@ -64,10 +64,10 @@ const Index = () => {
   return (
     <>
       <SEO
-        title="Maria Silva - Produção & Fotografia de Moda"
-        description="Fotógrafa de produção especializada em moda, editorial e fotografia comercial."
+        title="Ink Studio - Tatuagem Artística | Blackwork, Fine Line & Realismo"
+        description="Estúdio de tatuagem especializado em blackwork, fine line e realismo. Arte permanente que conta sua história."
         canonicalUrl="/"
-        ogType="profile"
+        ogType="website"
         jsonLd={jsonLd}
       />
 
@@ -77,7 +77,7 @@ const Index = () => {
         <PhotographerBio />
         
         {/* Elegant marquee divider */}
-        <Marquee text="Moda • Editorial • Comercial • Produção • Criação" />
+        <Marquee text="Blackwork • Fine Line • Realismo • Geométrico • Dotwork • Ornamental" />
 
         {error && (
           <div className="text-center py-20">
@@ -101,7 +101,7 @@ const Index = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                Trabalhos Selecionados
+                Trabalhos Recentes
               </motion.h2>
             </div>
             
@@ -123,8 +123,8 @@ const Index = () => {
 
         {/* AI Image Generator */}
         <div className="max-w-[1600px] mx-auto px-6 md:px-10 py-12 text-center">
-          <h2 className="text-3xl font-light tracking-wider mb-4">Crie sua Visão</h2>
-          <p className="text-muted-foreground mb-6">Use inteligência artificial para gerar conceitos visuais</p>
+          <h2 className="text-3xl font-light tracking-wider mb-4">Visualize sua Arte</h2>
+          <p className="text-muted-foreground mb-6">Use inteligência artificial para gerar conceitos de tatuagem</p>
           <AIImageGenerator />
         </div>
       </main>

@@ -14,10 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        'display': ['"Syne"', 'sans-serif'],
-        'sans': ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        'inter': ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        'playfair': ['"Syne"', 'sans-serif'],
+        'display': ['"Space Grotesk"', 'sans-serif'],
+        'sans': ['"Inter"', 'system-ui', 'sans-serif'],
+        'inter': ['"Inter"', 'system-ui', 'sans-serif'],
+        'mono': ['"JetBrains Mono"', 'monospace'],
       },
       fontSize: {
         'display-xl': ['clamp(3rem, 8vw, 7rem)', { lineHeight: '0.95', letterSpacing: '-0.03em' }],
@@ -69,6 +69,10 @@ export default {
           800: "hsl(var(--gray-800))",
           900: "hsl(var(--gray-900))",
         },
+        purple: {
+          light: "hsl(var(--purple-light))",
+          glow: "hsl(var(--purple-glow))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -104,6 +108,10 @@ export default {
           "0%": { opacity: "0", filter: "blur(10px)" },
           "100%": { opacity: "1", filter: "blur(0)" }
         },
+        "glow-pulse": {
+          "0%, 100%": { boxShadow: "0 0 20px hsl(var(--purple-glow) / 0.3)" },
+          "50%": { boxShadow: "0 0 40px hsl(var(--purple-glow) / 0.6)" }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -113,6 +121,7 @@ export default {
         "scale-in": "scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-up": "slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
         "blur-in": "blur-in 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
       },
       transitionTimingFunction: {
         'smooth': 'cubic-bezier(0.16, 1, 0.3, 1)',

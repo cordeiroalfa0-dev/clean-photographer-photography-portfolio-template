@@ -18,7 +18,7 @@ serve(async (req) => {
       throw new Error("LOVABLE_API_KEY is not configured");
     }
 
-    const enhancedPrompt = `Professional fashion photography, glamour style: ${prompt}. Ultra high resolution, studio lighting, elegant, sophisticated, artistic.`;
+    const enhancedPrompt = `Tattoo design concept, artistic tattoo illustration: ${prompt}. Black and grey ink style, high contrast, detailed linework, professional tattoo art, on white paper background.`;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
