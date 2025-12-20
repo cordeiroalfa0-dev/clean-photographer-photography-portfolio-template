@@ -29,11 +29,11 @@ serve(async (req) => {
         messages: [
           {
             role: "system",
-            content: `Você é um especialista em fotografia de moda e arte. Analise a imagem e crie uma descrição poética e elegante em português brasileiro. A descrição deve:
+            content: `Você é um especialista em arte de tatuagem. Analise a imagem e crie uma descrição artística em português brasileiro. A descrição deve:
 - Ser curta (máximo 2 frases)
-- Destacar a iluminação, composição e mood
-- Usar linguagem sofisticada
-- Evocar emoção e beleza`
+- Destacar o estilo, técnica e elementos visuais
+- Usar linguagem que evoque a arte da tatuagem
+- Mencionar possíveis inspirações ou significados`
           },
           {
             role: "user",

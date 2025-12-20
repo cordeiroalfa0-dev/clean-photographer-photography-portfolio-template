@@ -55,7 +55,7 @@ export const AIImageGenerator: React.FC = () => {
     
     const link = document.createElement('a');
     link.href = generatedImage;
-    link.download = `raya-ai-${Date.now()}.png`;
+    link.download = `inkstudio-ai-${Date.now()}.png`;
     link.click();
   };
 
@@ -71,7 +71,7 @@ export const AIImageGenerator: React.FC = () => {
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Wand2 className="w-5 h-5 text-primary" />
-            Gerador de Imagens IA
+            Gerador de Tatuagens IA
           </DialogTitle>
         </DialogHeader>
 
@@ -80,7 +80,7 @@ export const AIImageGenerator: React.FC = () => {
             <Input
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
-              placeholder="Descreva a imagem que deseja criar..."
+              placeholder="Descreva a tatuagem que deseja visualizar..."
               disabled={isGenerating}
               onKeyDown={(e) => e.key === 'Enter' && handleGenerate()}
             />
@@ -90,7 +90,7 @@ export const AIImageGenerator: React.FC = () => {
           </div>
 
           <div className="text-xs text-muted-foreground">
-            Sugestões: "mulher elegante em vestido dourado", "retrato dramático com luz de vela", "ensaio boudoir minimalista"
+            Sugestões: "lobo geométrico minimalista", "flores em fine line", "caveira blackwork com mandala", "fênix em realismo"
           </div>
 
           <AnimatePresence mode="wait">

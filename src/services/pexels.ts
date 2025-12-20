@@ -34,12 +34,12 @@ export interface PexelsResponse {
   prev_page?: string;
 }
 
-// Category-specific search queries for fashion photography
+// Category-specific search queries for tattoo art
 export const categoryQueries: Record<string, string> = {
-  'SELECTED': 'sexy woman model portrait studio',
-  'COMMISSIONED': 'lingerie model fashion beauty',
-  'EDITORIAL': 'glamour woman portrait sensual',
-  'PERSONAL': 'boudoir photography woman elegant'
+  'SELECTED': 'tattoo art blackwork design',
+  'COMMISSIONED': 'tattoo artist working studio',
+  'EDITORIAL': 'tattoo sleeve arm detail',
+  'PERSONAL': 'tattoo geometric minimalist'
 };
 
 export const fetchPexelsPhotos = async (
