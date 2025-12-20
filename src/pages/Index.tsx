@@ -8,6 +8,9 @@ import Lightbox from "@/components/Lightbox";
 import Marquee from "@/components/Marquee";
 import SEO from "@/components/SEO";
 import { fetchMixedMedia } from "@/services/pexels";
+import { AIChatAssistant } from "@/components/AIChatAssistant";
+import { AISuggestions } from "@/components/AISuggestions";
+import { AIImageGenerator } from "@/components/AIImageGenerator";
 
 const Index = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -114,6 +117,16 @@ const Index = () => {
             <p className="text-muted-foreground">Nenhuma imagem encontrada.</p>
           </div>
         )}
+
+        {/* AI Suggestions Section */}
+        <AISuggestions />
+
+        {/* AI Image Generator */}
+        <div className="max-w-[1600px] mx-auto px-6 md:px-10 py-12 text-center">
+          <h2 className="text-3xl font-light tracking-wider mb-4">Crie sua Visão</h2>
+          <p className="text-muted-foreground mb-6">Use inteligência artificial para gerar conceitos visuais</p>
+          <AIImageGenerator />
+        </div>
       </main>
 
       {lightboxOpen && displayImages.length > 0 && (
@@ -123,6 +136,9 @@ const Index = () => {
           onClose={() => setLightboxOpen(false)}
         />
       )}
+
+      {/* AI Chat Assistant - floating */}
+      <AIChatAssistant />
 
       <PortfolioFooter />
     </>
