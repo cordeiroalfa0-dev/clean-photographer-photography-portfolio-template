@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Lightbulb, Loader2, RefreshCw, Palette } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface Suggestion {
   title: string;
@@ -43,19 +42,57 @@ export const AISuggestions: React.FC = () => {
   };
 
   return (
-    <div className="py-16 px-4 bg-secondary/30">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-light tracking-wider mb-4">
-            <Palette className="w-8 h-8 inline-block mr-3 text-primary" />
+    <section className="py-24 px-4 relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-radial-purple pointer-events-none" />
+      
+      <div className="max-w-5xl mx-auto relative">
+        <div className="text-center mb-12">
+          <motion.div 
+            className="inline-flex items-center gap-3 glass-subtle px-6 py-3 rounded-full mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Palette className="w-5 h-5 text-primary" />
+            <span className="text-sm uppercase tracking-[0.3em] text-primary font-display">Inteligência Artificial</span>
+          </motion.div>
+          
+          <motion.h2 
+            className="text-display-lg text-foreground text-glow-subtle mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
             Inspiração IA
-          </h2>
-          <p className="text-muted-foreground">Deixe a inteligência artificial sugerir ideias únicas para sua próxima tatuagem</p>
+          </motion.h2>
+          
+          <motion.p 
+            className="text-muted-foreground max-w-lg mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            Deixe a inteligência artificial sugerir ideias únicas para sua próxima tatuagem
+          </motion.p>
         </div>
 
         {!hasLoaded && (
-          <div className="text-center">
-            <Button onClick={fetchSuggestions} disabled={isLoading} size="lg" className="gap-2 animate-glow-pulse">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <Button 
+              onClick={fetchSuggestions} 
+              disabled={isLoading} 
+              size="lg" 
+              className="gap-3 bg-gradient-to-r from-primary to-accent hover:opacity-90 glow-purple animate-glow-pulse rounded-full px-8 py-6 text-base font-display"
+            >
               {isLoading ? (
                 <>
                   <Loader2 className="w-5 h-5 animate-spin" />
@@ -68,7 +105,7 @@ export const AISuggestions: React.FC = () => {
                 </>
               )}
             </Button>
-          </div>
+          </motion.div>
         )}
 
         <AnimatePresence mode="wait">
@@ -78,32 +115,45 @@ export const AISuggestions: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
             >
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="grid md:grid-cols-3 gap-6 mb-10">
                 {suggestions.map((suggestion, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.1 }}
+                    className="glass-card rounded-2xl p-6 hover-lift group"
                   >
-                    <Card className="h-full hover:shadow-lg hover:shadow-primary/10 transition-all border-primary/20">
-                      <CardHeader>
-                        <CardTitle className="text-lg text-primary">{suggestion.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent className="space-y-3">
-                        <p className="text-sm text-muted-foreground">{suggestion.description}</p>
-                        <div className="space-y-1 text-xs">
-                          <p><span className="font-medium text-accent">Estilo:</span> {suggestion.style}</p>
-                          <p><span className="font-medium text-accent">Local:</span> {suggestion.placement}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center flex-shrink-0 group-hover:glow-purple transition-all duration-300">
+                        <Lightbulb className="w-5 h-5 text-primary" />
+                      </div>
+                      <h3 className="font-display text-lg text-foreground pt-1">{suggestion.title}</h3>
+                    </div>
+                    
+                    <p className="text-sm text-muted-foreground mb-5 leading-relaxed">{suggestion.description}</p>
+                    
+                    <div className="space-y-2 pt-4 border-t border-border/30">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs uppercase tracking-wider text-accent">Estilo</span>
+                        <span className="text-xs text-foreground/70">{suggestion.style}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs uppercase tracking-wider text-accent">Local</span>
+                        <span className="text-xs text-foreground/70">{suggestion.placement}</span>
+                      </div>
+                    </div>
                   </motion.div>
                 ))}
               </div>
 
               <div className="text-center">
-                <Button variant="outline" onClick={fetchSuggestions} disabled={isLoading} className="gap-2 border-primary/30 hover:border-primary">
+                <Button 
+                  variant="outline" 
+                  onClick={fetchSuggestions} 
+                  disabled={isLoading} 
+                  className="gap-3 glass-subtle border-primary/30 hover:border-primary hover:glow-purple rounded-full px-6"
+                >
                   {isLoading ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
                   ) : (
@@ -116,6 +166,6 @@ export const AISuggestions: React.FC = () => {
           )}
         </AnimatePresence>
       </div>
-    </div>
+    </section>
   );
 };

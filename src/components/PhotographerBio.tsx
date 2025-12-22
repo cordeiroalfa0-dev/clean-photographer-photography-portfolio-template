@@ -5,53 +5,75 @@ const PhotographerBio = () => {
   const nameLetters = "Ink Studio".split("");
   
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Dark gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-gray-900/20 to-background pointer-events-none" />
-      
-      {/* Floating purple accent shapes */}
-      <motion.div 
-        className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-primary/10 blur-3xl"
-        animate={{ 
-          scale: [1, 1.3, 1],
-          opacity: [0.2, 0.4, 0.2]
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div 
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-accent/10 blur-3xl"
-        animate={{ 
-          scale: [1.2, 1, 1.2],
-          opacity: [0.15, 0.35, 0.15]
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div 
-        className="absolute top-1/2 right-1/3 w-48 h-48 rounded-full bg-purple-glow/15 blur-2xl"
-        animate={{ 
-          x: [0, 30, 0],
-          y: [0, -20, 0],
-          opacity: [0.2, 0.5, 0.2]
-        }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-mesh">
+      {/* Animated background orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Main purple orb */}
+        <motion.div 
+          className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, hsl(270 100% 50% / 0.2) 0%, transparent 70%)',
+            filter: 'blur(60px)',
+          }}
+          animate={{ 
+            scale: [1, 1.2, 1],
+            x: [0, 30, 0],
+            y: [0, -20, 0],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        
+        {/* Secondary accent orb */}
+        <motion.div 
+          className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, hsl(280 100% 60% / 0.15) 0%, transparent 70%)',
+            filter: 'blur(80px)',
+          }}
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            x: [0, -40, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Small floating orb */}
+        <motion.div 
+          className="absolute top-1/2 right-1/3 w-[200px] h-[200px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, hsl(285 100% 70% / 0.25) 0%, transparent 70%)',
+            filter: 'blur(40px)',
+          }}
+          animate={{ 
+            y: [0, -40, 0],
+            opacity: [0.3, 0.6, 0.3]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+
+      {/* Noise overlay */}
+      <div className="absolute inset-0 noise-overlay pointer-events-none" />
       
       <div className="relative max-w-[1600px] mx-auto px-6 md:px-10 py-20">
-        <div className="max-w-5xl mx-auto text-center space-y-10">
-          {/* Year badge */}
-          <motion.p 
-            className="text-xs uppercase tracking-[0.4em] text-primary font-display"
+        <div className="max-w-5xl mx-auto text-center space-y-12">
+          {/* Year badge - glass style */}
+          <motion.div 
+            className="inline-flex"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Portfólio 2024
-          </motion.p>
+            <span className="glass-subtle px-6 py-2 rounded-full text-xs uppercase tracking-[0.4em] text-primary font-display">
+              Portfólio 2024
+            </span>
+          </motion.div>
           
-          {/* Animated name */}
+          {/* Animated name with glow */}
           <div className="overflow-hidden py-4">
             <motion.h1 
-              className="font-display text-[clamp(3.5rem,12vw,10rem)] leading-[0.85] tracking-[-0.04em] text-foreground accent-glow"
+              className="font-display text-display-xl text-foreground text-glow"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
@@ -60,7 +82,7 @@ const PhotographerBio = () => {
                 <motion.span
                   key={i}
                   className="inline-block"
-                  initial={{ opacity: 0, y: 50 }}
+                  initial={{ opacity: 0, y: 60 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ 
                     duration: 0.8, 
@@ -74,37 +96,39 @@ const PhotographerBio = () => {
             </motion.h1>
           </div>
           
-          {/* Tagline with line reveal */}
+          {/* Tagline in glass card */}
           <motion.div
             className="relative"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1 }}
           >
-            <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto font-light">
-              Estúdio de tatuagem especializado em{" "}
-              <span className="text-primary font-medium">blackwork</span>,{" "}
-              <span className="text-accent font-medium">fine line</span> e{" "}
-              <span className="text-purple-light font-medium">realismo</span>.
-              <br />
-              <span className="text-foreground/80">Arte permanente que conta sua história.</span>
-            </p>
+            <div className="glass-card inline-block px-10 py-8 rounded-2xl max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed font-light">
+                Estúdio especializado em{" "}
+                <span className="text-primary font-medium text-glow-subtle">blackwork</span>,{" "}
+                <span className="text-accent font-medium">fine line</span> e{" "}
+                <span className="text-purple-neon font-medium">realismo</span>.
+              </p>
+              <p className="text-foreground/70 mt-4 text-base">
+                Arte permanente que conta sua história.
+              </p>
+            </div>
           </motion.div>
 
-          {/* CTA with elegant hover */}
+          {/* CTA with glass button */}
           <motion.div 
-            className="pt-12"
+            className="pt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.3 }}
           >
             <Link 
               to="/about" 
-              className="group inline-flex items-center gap-4 text-sm uppercase tracking-[0.25em] text-foreground/70 hover:text-primary transition-all duration-500 font-display"
+              className="group inline-flex items-center gap-4 glass-subtle px-8 py-4 rounded-full text-sm uppercase tracking-[0.2em] text-foreground/80 hover:text-primary hover:glow-purple transition-all duration-500 font-display"
             >
               <span className="relative">
                 Conheça nosso trabalho
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-500" />
               </span>
               <motion.svg 
                 width="24" 
@@ -112,7 +136,7 @@ const PhotographerBio = () => {
                 viewBox="0 0 24 24" 
                 fill="none" 
                 stroke="currentColor" 
-                strokeWidth="1"
+                strokeWidth="1.5"
                 className="group-hover:translate-x-2 transition-transform duration-500"
               >
                 <path d="M5 12h14M12 5l7 7-7 7" />
@@ -124,16 +148,21 @@ const PhotographerBio = () => {
       
       {/* Scroll indicator */}
       <motion.div 
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
       >
         <motion.div
-          className="w-px h-16 bg-gradient-to-b from-transparent via-primary/50 to-transparent"
-          animate={{ scaleY: [0.5, 1, 0.5], opacity: [0.3, 0.7, 0.3] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        />
+          className="w-8 h-14 rounded-full border border-primary/30 flex items-start justify-center p-2"
+          style={{ boxShadow: '0 0 20px hsl(270 100% 65% / 0.2)' }}
+        >
+          <motion.div
+            className="w-1.5 h-3 bg-primary rounded-full"
+            animate={{ y: [0, 16, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
       </motion.div>
     </section>
   );
