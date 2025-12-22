@@ -94,15 +94,15 @@ const Index = () => {
           >
             {/* Section title */}
             <div className="max-w-[1600px] mx-auto px-6 md:px-10 pt-20 pb-8">
-              <motion.h2 
-                className="text-xs uppercase tracking-[0.3em] text-muted-foreground font-display"
+              <motion.div 
+                className="inline-flex items-center gap-3 glass-subtle px-6 py-3 rounded-full"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                Trabalhos Recentes
-              </motion.h2>
+                <span className="text-xs uppercase tracking-[0.3em] text-primary font-display">Trabalhos Recentes</span>
+              </motion.div>
             </div>
             
             <MasonryGallery
@@ -122,9 +122,16 @@ const Index = () => {
         <AISuggestions />
 
         {/* AI Image Generator */}
-        <div className="max-w-[1600px] mx-auto px-6 md:px-10 py-12 text-center">
-          <h2 className="text-3xl font-light tracking-wider mb-4">Visualize sua Arte</h2>
-          <p className="text-muted-foreground mb-6">Use inteligência artificial para gerar conceitos de tatuagem</p>
+        <div className="max-w-[1600px] mx-auto px-6 md:px-10 py-20 text-center">
+          <motion.h2 
+            className="text-display-md text-foreground text-glow-subtle mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            Visualize sua Arte
+          </motion.h2>
+          <p className="text-muted-foreground mb-10">Use inteligência artificial para gerar conceitos de tatuagem</p>
           <AIImageGenerator />
         </div>
       </main>
