@@ -63,7 +63,7 @@ const PortfolioHeader = ({ activeCategory }: PortfolioHeaderProps) => {
           to="/"
           className="font-display text-xl md:text-2xl tracking-tight text-foreground hover:text-primary transition-colors duration-500 text-glow-subtle"
         >
-          Ink Studio
+          Tatuagens Style
         </Link>
 
         {/* Mobile Menu Button */}

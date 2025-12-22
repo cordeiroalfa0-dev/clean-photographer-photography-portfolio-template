@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
 const PhotographerBio = () => {
-  const nameLetters = "Ink Studio".split("");
+  const nameLetters = "Tatuagens Style".split("");
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-mesh">

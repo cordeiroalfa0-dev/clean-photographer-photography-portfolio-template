@@ -47,12 +47,12 @@ const Index = () => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Ink Studio",
+    "name": "Tatuagens Style",
     "jobTitle": "Estúdio de Tatuagem",
-    "description": "Estúdio de tatuagem especializado em blackwork, fine line e realismo. Arte permanente que conta sua história.",
-    "url": "https://inkstudio.com.br",
-    "image": "https://inkstudio.com.br/og-image.jpg",
-    "sameAs": ["https://instagram.com/inkstudio.tattoo"],
+    "description": "Estúdio de tatuagem artística especializado em blackwork, fine line e realismo. Arte permanente que conta sua história.",
+    "url": "https://tatuagensstyle.com.br",
+    "image": "https://tatuagensstyle.com.br/og-image.jpg",
+    "sameAs": ["https://instagram.com/tatuagensstyle"],
     "knowsAbout": ["Blackwork", "Fine Line", "Realismo", "Tatuagem Geométrica", "Dotwork"],
     "address": {
       "@type": "PostalAddress",
@@ -64,8 +64,8 @@ const Index = () => {
   return (
     <>
       <SEO
-        title="Ink Studio - Tatuagem Artística | Blackwork, Fine Line & Realismo"
-        description="Estúdio de tatuagem especializado em blackwork, fine line e realismo. Arte permanente que conta sua história."
+        title="Tatuagens Style - Arte em Tatuagem | Blackwork, Fine Line & Realismo"
+        description="Estúdio de tatuagem artística especializado em blackwork, fine line e realismo. Arte permanente que conta sua história."
         canonicalUrl="/"
         ogType="website"
         jsonLd={jsonLd}

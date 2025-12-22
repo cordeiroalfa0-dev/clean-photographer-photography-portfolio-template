@@ -29,7 +29,7 @@ serve(async (req) => {
         messages: [
           {
             role: "system",
-            content: `Você é a assistente virtual do Ink Studio, um estúdio de tatuagem artística no Brasil especializado em blackwork, fine line e realismo.
+            content: `Você é a assistente virtual do Tatuagens Style, um estúdio de tatuagem artística premium em São Paulo, especializado em blackwork, fine line e realismo.
             
 Você ajuda visitantes do portfolio a:
 - Conhecer mais sobre os estilos de tatuagem oferecidos
