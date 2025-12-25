@@ -37,8 +37,8 @@ export interface PexelsResponse {
 // Category-specific search queries for tattoo art
 export const categoryQueries: Record<string, string> = {
   'SELECTED': 'tattoo art blackwork design',
-  'COMMISSIONED': 'tattoo artist working studio',
-  'EDITORIAL': 'tattoo sleeve arm detail',
+  'COMMISSIONED': 'tattoo artist working back tattoo woman',
+  'EDITORIAL': 'back tattoo woman tattoo artist working',
   'PERSONAL': 'tattoo geometric minimalist'
 };
 
